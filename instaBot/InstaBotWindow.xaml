@@ -1,0 +1,27 @@
+﻿<Window x:Class="instaBot.InstaBotWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:instaBot"
+        mc:Ignorable="d"
+        Title="InstaBotWindow" Height="730.862" Width="872.771" BorderThickness="0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="119*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="textBoxLog" Margin="10" Grid.Row="1" TextWrapping="Wrap" Background="#FFEADDDD" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
+        <ListBox x:Name="listBoxQueue" Grid.Column="1" Grid.RowSpan="2" BorderThickness="2,0,0,0" Background="#FFE6FEFF" AllowDrop="True" Drop="listBoxQueue_Drop"/>
+        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,0,0,10">
+            <Label x:Name="labelTimer" Content="" Margin="95,10,95,295" FontSize="36" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe WP Semibold" Foreground="#FF0070E0"/>
+        </Border>
+        <Image x:Name="imagePost" Margin="52,94,46,0" Height="202" VerticalAlignment="Top" OpacityMask="#FFFBD6D6"/>
+        <TextBox x:Name="textBoxCaption" TextWrapping="Wrap" Margin="52,301,46,24" IsReadOnly="True" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+    </Grid>
+</Window>

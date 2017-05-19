@@ -1,0 +1,24 @@
+﻿<Window x:Class="instaBot.AddPostWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:instaBot"
+        mc:Ignorable="d"
+        Title="AddPostWindow" Height="492.734" Width="452">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFF2F8FD" Offset="0"/>
+            <GradientStop Color="#FFA4CDF0" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Image x:Name="imagePost" Height="174" Margin="80,10,81,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Подпись:" Height="27" Margin="80,278,81,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Caption" Height="73" Margin="80,310,81,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="buttonReady" Content="Готово" Margin="114,400,115,0" VerticalAlignment="Top" Height="35" FontSize="18" Background="#FF63DA63" VerticalContentAlignment="Center" Click="buttonReady_Click" IsDefault="True"/>
+        <DatePicker x:Name="DateOfPost" HorizontalAlignment="Left" Margin="114,197,0,0" VerticalAlignment="Top" Height="24" Width="215" SelectedDateFormat="Long" DisplayDate="05/18/2017 15:34:00"/>
+        <CheckBox x:Name="checkBoxTime" Content="Подогнать под последний пост" HorizontalAlignment="Left" Margin="114,243,0,0" VerticalAlignment="Top" Width="215"/>
+
+    </Grid>
+</Window>
