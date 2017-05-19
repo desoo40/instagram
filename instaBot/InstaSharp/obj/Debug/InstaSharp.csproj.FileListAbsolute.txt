@@ -1,0 +1,8 @@
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\bin\Debug\InstaSharp.dll.config
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\bin\Debug\InstaSharp.dll
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\bin\Debug\InstaSharp.pdb
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\obj\Debug\InstaSharp.dll
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\obj\Debug\InstaSharp.pdb
+C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\obj\Debug\InstaSharp.csprojResolveAssemblyReference.cache
