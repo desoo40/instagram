@@ -82,7 +82,7 @@ namespace instaBot
                     var _post = new Post(post);
 
                     _post.Caption = wind.textBox_Caption.Text;
-
+                    
                     if (wind.DateOfPost.SelectedDate == null)
                         _post.PosTime = caclTimeByLastInQueuePost();
                     else
