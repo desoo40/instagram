@@ -85,8 +85,10 @@ namespace instaBot
 
                     if (wind.DateOfPost.SelectedDate == null)
                         _post.PosTime = caclTimeByLastInQueuePost();
+                    else
+                        _post.PosTime = wind.DateOfPost.SelectedDate.Value;
 
-                    
+                    textBoxLog.Text += $"[{DateTime.Now}]   Пост добавлен в очередь с подписью \"{_post.Caption}\". Дата публикации: {_post.PosTime}\n";
 
                     //_post = wind.buttonReady_Click();
 
