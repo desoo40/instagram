@@ -20,3 +20,4 @@ D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\MainWindow.g.cs
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\MainWindow.baml
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\AddPostWindow.g.cs
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\AddPostWindow.baml
+D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\GeneratedInternalTypeHelper.g.cs

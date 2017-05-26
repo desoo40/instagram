@@ -95,7 +95,8 @@ namespace instaBot
                     //if (wind.DateOfPost.SelectedDate == null)
                     //    _post.PosTime = caclTimeByLastInQueuePost();
 
-                    //postQueue.Add();
+                    postQueue.Add(_post);
+                    //listBoxQueue.Items;
                     //postQueue.Sort();
                 }
             }
