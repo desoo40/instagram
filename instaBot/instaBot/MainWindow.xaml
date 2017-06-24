@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:instaBot"
         mc:Ignorable="d"
-        Title="MainWindow" Height="310.731" Width="507.945" ResizeMode="NoResize">
+        Title="MainWindow" Height="310.731" Width="507.945" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -24,7 +24,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="190,137,0,0" VerticalAlignment="Top" Width="120" Height="24" Password="svirina"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="190,137,0,0" VerticalAlignment="Top" Width="120" Height="24"/>
 
     </Grid>
 </Window>

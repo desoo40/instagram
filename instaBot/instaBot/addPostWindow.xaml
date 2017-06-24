@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:instaBot"
         mc:Ignorable="d"
-        Title="AddPostWindow" Height="523.008" Width="452">
+        Title="AddPostWindow" Height="504.171" Width="452">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFF2F8FD" Offset="0"/>
@@ -14,11 +14,14 @@
     </Window.Background>
     <Grid>
         <Image x:Name="imagePost" Height="174" Margin="80,10,81,0" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Подпись:" Height="27" Margin="80,315,81,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_Caption" Height="73" Margin="80,347,81,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="buttonReady" Content="Готово" Margin="114,437,115,0" VerticalAlignment="Top" Height="35" FontSize="18" Background="#FF63DA63" VerticalContentAlignment="Center" Click="buttonReady_Click" IsDefault="True"/>
+        <Label x:Name="label" Content="Подпись:" Height="27" Margin="80,278,81,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Caption" Height="73" Margin="80,310,81,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="buttonReady" Content="Готово" Margin="114,411,115,0" VerticalAlignment="Top" Height="35" FontSize="18" Background="#FF63DA63" VerticalContentAlignment="Center" Click="buttonReady_Click" IsDefault="True"/>
         <DatePicker x:Name="DateOfPost" HorizontalAlignment="Left" Margin="114,197,0,0" VerticalAlignment="Top" Height="24" Width="215" SelectedDateFormat="Long" DisplayDate="05/18/2017 15:34:00"/>
-        <CheckBox x:Name="checkBoxTime" Content="Подогнать под последний пост" HorizontalAlignment="Left" Margin="114,280,0,0" VerticalAlignment="Top" Width="215"/>
+        <CheckBox x:Name="checkBoxTime" Content="Подогнать под последний пост" HorizontalAlignment="Left" Margin="114,258,0,0" VerticalAlignment="Top" Width="197" IsChecked="True"/>
+        <RadioButton x:Name="radioButtonMorning" Content="Утром" HorizontalAlignment="Left" Margin="114,235,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButtonEvening" Content="Вечером" HorizontalAlignment="Left" Margin="261,235,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonAbort" Content="Отмена" HorizontalAlignment="Left" Margin="388,10,0,0" VerticalAlignment="Top" Width="55" Background="#FFDC5353" Click="buttonAbort_Click"/>
 
     </Grid>
 </Window>

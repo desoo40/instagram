@@ -5,23 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:instaBot"
         mc:Ignorable="d"
-        Title="InstaBotWindow" Height="730.862" Width="872.771" BorderThickness="0">
+        Title="InstaBotWindow" Height="866.862" Width="1348.771" BorderThickness="0" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="150*"/>
             <RowDefinition Height="119*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="21*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="802*"/>
+            <ColumnDefinition Width="539*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="textBoxLog" Margin="10" Grid.Row="1" TextWrapping="Wrap" Background="#FFEADDDD" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
-        <ListBox x:Name="listBoxQueue" Grid.Column="1" Grid.RowSpan="2" BorderThickness="2,0,0,0" Background="#FFE6FEFF" AllowDrop="True" Drop="listBoxQueue_Drop"/>
         <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,0,0,10">
-            <Label x:Name="labelTimer" Content="" Margin="95,10,95,295" FontSize="36" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe WP Semibold" Foreground="#FF0070E0"/>
+            <Label x:Name="labelTimer" Content="" Margin="149,10,149,0" FontSize="36" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe WP Semibold" Foreground="#FF0070E0" Height="108" VerticalAlignment="Top"/>
         </Border>
-        <Image x:Name="imagePost" Margin="52,94,46,0" Height="202" VerticalAlignment="Top" OpacityMask="#FFFBD6D6"/>
-        <TextBox x:Name="textBoxCaption" TextWrapping="Wrap" Margin="52,301,46,24" IsReadOnly="True" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Image x:Name="imagePost"  Width="300" Height="230" Margin="178,109,169,155" OpacityMask="#FFFBD6D6"/>
+        <TextBox x:Name="textBoxCaption" TextWrapping="Wrap" Margin="52,343,46,24" IsReadOnly="True" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <ListView x:Name="listViewQueue" Grid.Column="1" Grid.RowSpan="2" BorderThickness="1,0,0,0" Background="#FFD5E3F7" AllowDrop="True" Drop="listViewQueue_Drop">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="2" KeyDown="Grid_KeyDown">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding Path}"  Width="150" Height="100" Stretch="Fill"/>
+                        <TextBlock  Grid.Column="1" Text="{Binding PosTime}"  TextWrapping="WrapWithOverflow" MaxHeight="40" FontSize="12" HorizontalAlignment="Left" Margin="5,0,4,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFFF0202"/>
+                        <TextBlock  Grid.Column="1" Text="{Binding Caption}"  TextWrapping="WrapWithOverflow" MaxHeight="40" FontSize="20" HorizontalAlignment="Left" Margin="5,0,4,0"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="FrameworkElement">
+                    <Setter Property="Margin" Value="0,0,0,10"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
 
     </Grid>
 </Window>

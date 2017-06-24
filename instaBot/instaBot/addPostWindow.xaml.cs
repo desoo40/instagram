@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Windows.Forms.MessageBoxButtons;
+using MessageBox = System.Windows.MessageBox;
 
 namespace instaBot
 {
@@ -20,16 +22,14 @@ namespace instaBot
     public partial class AddPostWindow : Window
     {
         string Path;
+        public bool DoNotAdd = false;
         public AddPostWindow(string p)
         {
             InitializeComponent();
 
             Path = p;
 
-            BitmapImage b = new BitmapImage();
-            b.BeginInit();
-            b.UriSource = new Uri(Path);
-            b.EndInit();
+            BitmapImage b = new BitmapImage(new Uri(Path));
 
             imagePost.Source = b;         
         }
@@ -41,15 +41,25 @@ namespace instaBot
                 MessageBox.Show("Что по дате?");
                 return;
             }
-
-            if (DateOfPost.SelectedDate < DateTime.Now)
+            if (DateOfPost.SelectedDate != null)
             {
-                MessageBox.Show("Указанная дата уже прошла...");
-                return;
+                var dd = DateOfPost.SelectedDate.Value.DayOfYear;
+                if (dd < DateTime.Now.DayOfYear)
+                {
+                    MessageBox.Show("Указанная дата уже прошла...");
+                    return;
+                }
             }
-            
+
             Close();
         }
 
+        private void buttonAbort_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult r = MessageBox.Show("Не добавлять пост?", "Точно ли", MessageBoxButton.YesNo);
+
+            if (r == MessageBoxResult.Yes)
+                DoNotAdd = true;
+        }
     }
 }

@@ -1,7 +1,6 @@
 D:\Проги\git\instagram\instaBot\instaBot\bin\Debug\instaBot.exe.config
 D:\Проги\git\instagram\instaBot\instaBot\bin\Debug\instaBot.exe
 D:\Проги\git\instagram\instaBot\instaBot\bin\Debug\instaBot.pdb
-D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\instaBot.csprojResolveAssemblyReference.cache
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\App.g.cs
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\instaBot_MarkupCompile.cache
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\instaBot_MarkupCompile.lref
@@ -20,4 +19,4 @@ D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\MainWindow.g.cs
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\MainWindow.baml
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\AddPostWindow.g.cs
 D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\AddPostWindow.baml
-D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Проги\git\instagram\instaBot\instaBot\obj\Debug\instaBot.csprojResolveAssemblyReference.cache

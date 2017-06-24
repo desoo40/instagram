@@ -6,3 +6,11 @@ C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\obj\Debug\InstaSharp.dll
 C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\obj\Debug\InstaSharp.pdb
 C:\Users\Den\Source\Repos\InstaSharp\InstaSharp\obj\Debug\InstaSharp.csprojResolveAssemblyReference.cache
+D:\Проги\git\instagram\instaBot\InstaSharp\bin\Debug\InstaSharp.dll.config
+D:\Проги\git\instagram\instaBot\InstaSharp\bin\Debug\InstaSharp.dll
+D:\Проги\git\instagram\instaBot\InstaSharp\bin\Debug\InstaSharp.pdb
+D:\Проги\git\instagram\instaBot\InstaSharp\bin\Debug\Newtonsoft.Json.dll
+D:\Проги\git\instagram\instaBot\InstaSharp\bin\Debug\Newtonsoft.Json.xml
+D:\Проги\git\instagram\instaBot\InstaSharp\obj\Debug\InstaSharp.csprojResolveAssemblyReference.cache
+D:\Проги\git\instagram\instaBot\InstaSharp\obj\Debug\InstaSharp.dll
+D:\Проги\git\instagram\instaBot\InstaSharp\obj\Debug\InstaSharp.pdb

@@ -28,10 +28,10 @@ namespace instaBot
         {
             InitializeComponent();
 
-            InstaBotWindow instaWind = new InstaBotWindow(uploader, login);
-            App.Current.MainWindow = instaWind;
-            Close();
-            instaWind.Show();
+            //InstaBotWindow instaWind = new InstaBotWindow(uploader, login);
+            //App.Current.MainWindow = instaWind;
+            //Close();
+            //instaWind.Show();
         }
         public static SecureString ConvertToSecureString(string strPassword)
         {
@@ -55,19 +55,28 @@ namespace instaBot
             {
                 MessageBox.Show("Неверный логин или пароль. Попробуйте еще раз", "Ошибка");
             };
-
+            //uploader.UploadImage(@"D:\Фото\desoo88\IMG_6638.JPG", "");
             uploader.Login(); // без этой херни не работают две верхние (?)
         }
 
 
         private void Uploader_SuccessfulLoginEvent(object sender, EventArgs e)
         {
-            InstaBotWindow instaWind = new InstaBotWindow(uploader, login);
+            InstaBotWindow instaWind = new InstaBotWindow(login, passwordBox.Password);
             App.Current.MainWindow = instaWind;
             Close();
             instaWind.Show();
         }
 
-      
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var login = "sasanichkin";
+            var pass = "svirina";
+
+            uploader = new InstagramUploader(login, ConvertToSecureString (pass));
+
+            uploader.Login();
+            uploader.Like();
+        }
     }
 }

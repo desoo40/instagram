@@ -82,6 +82,11 @@ namespace InstaSharp
             return tempImage;
         }
 
+        public void Like()
+        {
+            
+        }
+
         public void Login()
         {
             var instagramApi = new InstagramApi();

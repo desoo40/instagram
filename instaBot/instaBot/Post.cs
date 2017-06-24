@@ -14,14 +14,12 @@ namespace instaBot
         public string Path { get; set; }
         public string Caption { get; set; }
         public DateTime PosTime { get; set; }
-        public Image Image { get; set; }
 
         public Post()
         {
             Path = "";
             Caption = "";
             PosTime = new DateTime();
-            Image = new Image();
         }
 
         public Post(string path, string cap, DateTime dt)
@@ -29,9 +27,6 @@ namespace instaBot
             Path = path;
             Caption = cap;
             PosTime = new DateTime();
-            Image = new Image();
-            BitmapImage bi = new BitmapImage(new Uri(Path));
-            Image.Source = bi;
         }
 
         public Post(string path)
@@ -39,9 +34,6 @@ namespace instaBot
             Path = path;
             Caption = "";
             PosTime = new DateTime();
-            Image = new Image();
-            BitmapImage bi = new BitmapImage(new Uri(Path));
-            Image.Source = bi;
         }
     }
 }
