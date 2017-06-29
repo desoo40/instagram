@@ -13,18 +13,21 @@ namespace InstaBot
     {
         static void Main(string[] args)
         {
-            InstAPI api = new InstAPI("sasanichkin", "svirina");
-            if (api.Login())
+            InstAPI api = new InstAPI("desoo88", "Sd1324567");
+
+            if(!api.Login())
+                return;
+
+            var listOfMediaId = api.GetFeedMediaIdsByUser("shurubushek_");
+
+            var kek = new Random();
+
+            foreach (var publication in listOfMediaId)
             {
-                var list = api.GetFeedMediaIdsByUser("desoo88");
-
-                foreach (var kek in list)
-                {
-                    api.SetLikeToMedia(kek);
-                    Console.WriteLine("Liked post with ID = " + kek);
-
-                    System.Threading.Thread.Sleep(1000);
-                }
+                api.SetLikeToMedia(publication);
+                Console.WriteLine("ID = " + publication);
+                var sleepTimeKek = kek.Next(-5000, 5000);
+                System.Threading.Thread.Sleep(20000 + sleepTimeKek);
                 //api.GetUserFeed();
                 //api.SetLikeToMedia(api.TempId);
             }

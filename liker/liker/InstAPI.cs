@@ -14,7 +14,7 @@ namespace InstaBot
 
         private string _instaWebLogin = "accounts/login/ajax/";
         private string _instaWebUserFeed = "?__a=1";
-        private string _instaWebFeedByUser = "_USER_HERE_/?__a=1";
+        private string _instaWebFeedByUser = "_USER_HERE_/?__a=1&max_id=";
         private string _instaWebLike = "web/likes/_ID_HERE_/like/";
 
         public string TempId { get; set; }
@@ -125,24 +125,37 @@ namespace InstaBot
                 Console.WriteLine("Please, login first!");
                 return null;
             }
+            var tmpMediaId = "";
+            var listOfMediaId = new List<string>();
+            var hasNextPage = true;
 
-            //getUserFeed JSON
-            var feedRequest = new RestRequest(_instaWebFeedByUser.Replace("_USER_HERE_", user), Method.GET);
-            AddStdHeaders(ref feedRequest);
-
-            var feedResponse = MakeRequest(feedRequest);
-
-            //get first media ID from JSON feed
-            var o = JObject.Parse(feedResponse.Content);
-            var a = o["user"]["media"]["nodes"].ToList();
-            var l = new List<string>();
-
-            foreach (var b in a)
+            while (hasNextPage)
             {
-                l.Add(b["id"].ToString());
-            }
+                //getUserFeed JSON
+                var feedRequest = new RestRequest(_instaWebFeedByUser.Replace("_USER_HERE_", user) + tmpMediaId, Method.GET);
+                AddStdHeaders(ref feedRequest);
 
-            return l;
+                var feedResponse = MakeRequest(feedRequest);
+
+                //get first media ID from JSON feed
+                var parsedJson = JObject.Parse(feedResponse.Content);
+                var mediaNode = parsedJson["user"]["media"]["nodes"].ToList();
+                var nextPageStr = parsedJson["user"]["media"]["page_info"]["has_next_page"].ToString();
+
+                foreach (var b in mediaNode)
+                {
+                    listOfMediaId.Add(b["id"].ToString());
+                }
+
+                if (nextPageStr.ToLower() == "false")
+                    hasNextPage = false;
+
+                tmpMediaId = listOfMediaId.Last();
+                //System.Threading.Thread.Sleep(20);
+            }
+        
+
+            return listOfMediaId;
         }
 
         public void SetLikeToMedia(string id)
