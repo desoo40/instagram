@@ -16,12 +16,20 @@ namespace InstaBot
         private string _instaWebUserFeed = "?__a=1";
         private string _instaWebFeedByUser = "_USER_HERE_/?__a=1&max_id=";
         private string _instaWebLike = "web/likes/_ID_HERE_/like/";
+        private string _instaWebPostInfo = "p/_CODE_HERE_/?__a=1";
 
         public string TempId { get; set; }
 
         private RestClient _client;
         private string _csrftoken;
         private bool _isLogin;
+
+        public class MediaInfo
+        {
+            public string Id { get; set; }
+            public string Code { get; set; }
+
+        }
 
         public InstAPI(string login, string pass)
         {
@@ -118,7 +126,7 @@ namespace InstaBot
             TempId = id;
         }
 
-        public List<string> GetFeedMediaIdsByUser(string user)
+        public List<MediaInfo> GetFeedMediaIdsByUser(string user)
         {
             if (!_isLogin)
             {
@@ -126,7 +134,7 @@ namespace InstaBot
                 return null;
             }
             var tmpMediaId = "";
-            var listOfMediaId = new List<string>();
+            var listOfMediaId = new List<MediaInfo>();
             var hasNextPage = true;
 
             while (hasNextPage)
@@ -144,44 +152,68 @@ namespace InstaBot
 
                 foreach (var b in mediaNode)
                 {
-                    listOfMediaId.Add(b["id"].ToString());
+                    listOfMediaId.Add(new MediaInfo() {Code = b["code"].ToString(), Id = b["id"].ToString()});
                 }
 
                 if (nextPageStr.ToLower() == "false")
                     hasNextPage = false;
 
-                tmpMediaId = listOfMediaId.Last();
-                //System.Threading.Thread.Sleep(20);
+                tmpMediaId = listOfMediaId.Last().Id;
+                Console.Write("\rCollected: " + listOfMediaId.Count);
             }
         
-
+            Console.WriteLine();
             return listOfMediaId;
         }
 
-        public void SetLikeToMedia(string id)
+        public bool SetLikeToMedia(MediaInfo inf)
         {
             if (!_isLogin)
             {
                 Console.WriteLine("Please, login first!");
-                return;
+                return false;
+            }
+            if (CheckLikeByCode(inf.Code))
+            {
+                Console.WriteLine("Skipped");
+                return false;
             }
 
             //setLike to id
-            var likeRequest = new RestRequest(_instaWebLike.Replace("_ID_HERE_", id), Method.POST);
+            var likeRequest = new RestRequest(_instaWebLike.Replace("_ID_HERE_", inf.Id), Method.POST);
             AddStdHeaders(ref likeRequest);
 
             var likeResponse = MakeRequest(likeRequest);
+
             if (likeResponse.Content.Contains("\"status\": \"ok\""))
             {
-                Console.WriteLine("Liked!");
+                Console.WriteLine("Liked ID=" + inf.Id);
+                return true;
             }
-            else
-            {
-                Console.WriteLine("Error");
-                Console.WriteLine(likeResponse.Content);
-            }
+
+            Console.WriteLine("Error");
+            Console.WriteLine(likeResponse.Content);
+
+            return false;
         }
 
-        
+        private bool CheckLikeByCode(string code)
+        {
+            if (!_isLogin)
+            {
+                Console.WriteLine("Please, login first!");
+                return false;
+            }
+
+            var infoRequest = new RestRequest(_instaWebPostInfo.Replace("_CODE_HERE_", code), Method.POST);
+            AddStdHeaders(ref infoRequest);
+
+            var infoResponse = MakeRequest(infoRequest);
+            var parsedJson = JObject.Parse(infoResponse.Content);
+            var isLikedStr = parsedJson["graphql"]["shortcode_media"]["viewer_has_liked"].ToString();
+
+            return bool.Parse(isLikedStr);
+        }
+
     }
 }

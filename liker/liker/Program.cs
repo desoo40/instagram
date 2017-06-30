@@ -13,23 +13,24 @@ namespace InstaBot
     {
         static void Main(string[] args)
         {
-            InstAPI api = new InstAPI("desoo88", "Sd1324567");
+            InstAPI api = new InstAPI("sasanichkin", "svirina");
 
             if(!api.Login())
                 return;
 
-            var listOfMediaId = api.GetFeedMediaIdsByUser("shurubushek_");
+            var listOfMediaId = api.GetFeedMediaIdsByUser("desoo");
 
             var kek = new Random();
 
             foreach (var publication in listOfMediaId)
             {
-                api.SetLikeToMedia(publication);
-                Console.WriteLine("ID = " + publication);
-                var sleepTimeKek = kek.Next(-5000, 5000);
-                System.Threading.Thread.Sleep(20000 + sleepTimeKek);
-                //api.GetUserFeed();
-                //api.SetLikeToMedia(api.TempId);
+                if (api.SetLikeToMedia(publication))
+                {
+                    var sleepTimeKek = kek.Next(-2000, 2000);
+                    System.Threading.Thread.Sleep(5000 + sleepTimeKek);
+                    //api.GetUserFeed();
+                    //api.SetLikeToMedia(api.TempId);
+                }
             }
 
             //End
