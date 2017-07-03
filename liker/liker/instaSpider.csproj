@@ -7,8 +7,8 @@
     <ProjectGuid>{F403DA37-68D3-4CDD-BD06-EFC9C8F86548}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>liker</RootNamespace>
-    <AssemblyName>liker</AssemblyName>
+    <RootNamespace>instaSpider</RootNamespace>
+    <AssemblyName>instaSpider</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

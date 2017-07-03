@@ -5,7 +5,7 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
-namespace InstaBot
+namespace instaSpider
 {
     public class InstAPI
     {
@@ -17,6 +17,8 @@ namespace InstaBot
         private string _instaWebFeedByUser = "_USER_HERE_/?__a=1&max_id=";
         private string _instaWebLike = "web/likes/_ID_HERE_/like/";
         private string _instaWebPostInfo = "p/_CODE_HERE_/?__a=1";
+        private string _instaWebUserInfo = "_USER_HERE_/?__a=1";
+        private string _instaWebFollow = "web/friendships/_ID_HERE_/follow/";
 
         public string TempId { get; set; }
 
@@ -29,6 +31,12 @@ namespace InstaBot
             public string Id { get; set; }
             public string Code { get; set; }
 
+        }
+
+        public class UserInfo
+        {
+            public string Id { get; set; }
+            public bool IsFollowed { get; set; }
         }
 
         public InstAPI(string login, string pass)
@@ -215,5 +223,57 @@ namespace InstaBot
             return bool.Parse(isLikedStr);
         }
 
+        public bool FollowUser(string nickname)
+        {
+            if (!_isLogin)
+            {
+                Console.WriteLine("Please, login first!");
+                return false;
+            }
+
+            var usrInf = GetUserInfo(nickname);
+
+            if (usrInf.IsFollowed)
+            {
+                Console.WriteLine($"User {nickname} already followed");
+                return false;
+            }
+
+            //setLike to id
+            var followRequest = new RestRequest(_instaWebFollow.Replace("_ID_HERE_", usrInf.Id), Method.POST);
+            AddStdHeaders(ref followRequest);
+
+            var likeResponse = MakeRequest(followRequest);
+
+            if(likeResponse.Content.Contains("\"status\": \"ok\""))
+            {
+                Console.WriteLine("Followed ID=" + usrInf.Id);
+                return true;
+            }
+
+            Console.WriteLine("Error");
+            Console.WriteLine(likeResponse.Content);
+
+            return false;
+        }
+
+        private UserInfo GetUserInfo(string nickname)
+        {
+            var infoRequest = new RestRequest(_instaWebUserInfo.Replace("_USER_HERE_", nickname), Method.GET);
+            AddStdHeaders(ref infoRequest);
+
+            var infoResponse = MakeRequest(infoRequest);
+
+            //get first media ID from JSON feed
+            var parsedJson = JObject.Parse(infoResponse.Content);
+
+
+            return new UserInfo()
+            {
+                Id = parsedJson["user"]["id"].ToString(),
+                IsFollowed = bool.Parse(parsedJson["user"]["follows_viewer"].ToString())
+            
+            };
+        }
     }
 }
